@@ -206,7 +206,7 @@ function App() {
             className="text-2xl font-bold bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent"
             whileHover={{ scale: 1.05 }}
           >
-            Md Omar Faruk Sakib's ePortfolio
+            Md Omar Faruk Sakib
           </motion.div>
           <div className="hidden md:flex space-x-6">
             {['home', 'about', 'skills', 'projects', 'experience', 'certifications', 'contact'].map((section) => (
