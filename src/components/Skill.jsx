@@ -26,6 +26,7 @@ const skillData = [
   { name: 'Clerk', icon: '🛡️', category: 'Other' },
   { name: 'Jira', icon: '📋', category: 'Other' },
   { name: 'Selenium', icon: '🧪', category: 'Testing' },
+  { name: 'Apache JMeter', icon: '🔥', category: 'Testing' },
   { name: 'Postman', icon: '📮', category: 'Testing' },
   { name: 'MongoDB', icon: '🍃', category: 'Databases' },
   { name: 'Mongoose', icon: '🐭', category: 'Databases' },
