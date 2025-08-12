@@ -5,7 +5,7 @@ import path from 'path'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: '/sakib_eportfolio/',
+  base: '/sakibeportfolio/',
   plugins: [react(),tailwindcss()],
   resolve: {
     alias: {
