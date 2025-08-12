@@ -36,6 +36,7 @@ import {
 } from 'lucide-react'
 import './App.css'
 import Skill from './components/Skill.jsx'
+import Education from './components/Education.jsx'
 
 function App() {
   const [darkMode, setDarkMode] = useState(true)
@@ -211,7 +212,7 @@ function App() {
             Md Omar Faruk Sakib
           </motion.div>
           <div className="hidden md:flex space-x-6">
-            {['home', 'about', 'skills', 'projects', 'experience', 'certifications', 'contact'].map((section) => (
+            {['home', 'about', 'skills', 'projects', 'experience', 'education', 'certifications', 'contact'].map((section) => (
               <motion.button
                 key={section}
                 onClick={() => scrollToSection(section)}
@@ -607,6 +608,7 @@ function App() {
         </motion.div>
       </section>
 
+
       {/* Experience Section */}
       <section id="experience" className="py-16 px-4">
         <motion.div 
@@ -691,6 +693,9 @@ function App() {
           </div>
         </motion.div>
       </section>
+
+      {/* Education Section */}
+      <Education />
 
       {/* Certifications Section */}
       <section id="certifications" className="py-16 px-4 bg-muted/30">
