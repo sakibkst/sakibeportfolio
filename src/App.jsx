@@ -1,3 +1,4 @@
+      
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Button } from '@/components/ui/button.jsx'
@@ -34,6 +35,7 @@ import {
   Award
 } from 'lucide-react'
 import './App.css'
+import Skill from './components/Skill.jsx'
 
 function App() {
   const [darkMode, setDarkMode] = useState(true)
@@ -299,10 +301,12 @@ function App() {
                 </Button>
               </motion.div>
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <Button variant="outline" size="lg" className="group">
-                  <Download className="mr-2 h-4 w-4 group-hover:animate-bounce" />
-                  Download Resume
-                </Button>
+                <a href="/resume.pdf" download target="_blank" rel="noopener noreferrer">
+                  <Button variant="outline" size="lg" className="group">
+                    <Download className="mr-2 h-4 w-4 group-hover:animate-bounce" />
+                    Download Resume
+                  </Button>
+                </a>
               </motion.div>
             </motion.div>
             <motion.div 
@@ -373,6 +377,7 @@ function App() {
         />
       </section>
 
+
       {/* About Section */}
       <section id="about" className="py-16 px-4 bg-muted/30 relative">
         <motion.div 
@@ -440,6 +445,9 @@ function App() {
           </div>
         </motion.div>
       </section>
+
+      {/* Skills Section (Component) */}
+      <Skill />
 
       {/* Skills Section */}
       <section id="skills" className="py-16 px-4">
