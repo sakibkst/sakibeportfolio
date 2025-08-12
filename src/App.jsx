@@ -36,7 +36,7 @@ import {
 import './App.css'
 
 function App() {
-  const [darkMode, setDarkMode] = useState(false)
+  const [darkMode, setDarkMode] = useState(true)
   const [activeSection, setActiveSection] = useState('home')
   const [isVisible, setIsVisible] = useState({})
 
