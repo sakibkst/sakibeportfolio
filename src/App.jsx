@@ -426,7 +426,7 @@ function App() {
                 transition={{ type: "spring", stiffness: 300 }}
               >
                 <img 
-                  src="/src/assets/engineer-photo.jpg" 
+                  src="/engineer-photo.jpg" 
                   alt="SQA Engineer Professional Photo"
                   className="w-full h-full object-cover"
                 />
