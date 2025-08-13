@@ -1,3 +1,24 @@
+/* Custom scrollbar for project technologies row */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #35747d #f3f4f6;
+}
+.custom-scrollbar::-webkit-scrollbar {
+  height: 12px;
+  background: #f3f4f6;
+  border-radius: 8px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #35747d;
+  border-radius: 8px;
+}
+.custom-scrollbar::-webkit-scrollbar-button {
+  display: none;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #f3f4f6;
+  border-radius: 8px;
+}
 @import "tailwindcss";
 @import "tw-animate-css";
 

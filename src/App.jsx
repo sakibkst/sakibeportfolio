@@ -1,5 +1,10 @@
       
 import { useState, useEffect } from 'react'
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination, A11y } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 import { motion, AnimatePresence } from 'framer-motion'
 import { Button } from '@/components/ui/button.jsx'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card.jsx'
@@ -113,8 +118,8 @@ function App() {
 
   const projects = [
     {
-      title: 'E-Commerce Testing Suite',
-      description: 'Comprehensive testing strategy for a large-scale e-commerce platform including functional, performance, and security testing.',
+      title: 'Autoworx ERP Testing Suite',
+      description: 'Comprehensive testing strategy for a large-scale Autoworx Enterprise resource planning platform including functional, performance, and security testing.',
       technologies: ['Selenium', 'TestNG', 'REST Assured', 'JMeter', 'JIRA'],
       testCases: '500+',
       defectsFound: '150+',
@@ -136,6 +141,16 @@ function App() {
       coverage: '98%',
       gradient: 'from-green-600 to-teal-600',
       featured: true
+    },
+    {
+      title: 'Healthcare System Validation',
+      description: 'Validation and verification of healthcare management system ensuring HIPAA compliance and data integrity.',
+      technologies: ['Manual Testing', 'SQL', 'Postman', 'LoadRunner', 'Zephyr'],
+      testCases: '400+',
+      defectsFound: '120+',
+      coverage: '92%',
+      gradient: 'from-orange-600 to-pink-600',
+      featured: false
     },
     {
       title: 'Healthcare System Validation',
@@ -527,120 +542,132 @@ function App() {
           >
             Testing Projects
           </motion.h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <Swiper
+            modules={[Navigation, Pagination, A11y]}
+            spaceBetween={30}
+            slidesPerView={1}
+            navigation
+            pagination={{ clickable: true }}
+            breakpoints={{
+              768: { slidesPerView: 2 },
+              1024: { slidesPerView: 3 }
+            }}
+            className="project-swiper pb-12"
+          >
             {projects.map((project, index) => (
-              <motion.div
-                key={index}
-                variants={itemVariants}
-                whileHover={{ y: -10 }}
-                transition={{ type: "spring", stiffness: 300 }}
-              >
-                <Card className="overflow-hidden hover:shadow-xl transition-all duration-300 group border-0">
-                  <div className={`h-48 bg-gradient-to-br ${project.gradient} flex items-center justify-center relative overflow-hidden`}>
-                    {project.featured && (
-                      <motion.div
-                        className="absolute top-4 right-4 bg-yellow-500 text-yellow-900 px-2 py-1 rounded-full text-xs font-bold flex items-center gap-1"
-                        initial={{ scale: 0 }}
-                        animate={{ scale: 1 }}
-                        transition={{ delay: 0.5 }}
-                      >
-                        <Star className="h-3 w-3" />
-                        Featured
-                      </motion.div>
-                    )}
-                    {project.img ? (
-                      <motion.img
-                        src={project.img}
-                        alt={project.title}
-                        className="absolute inset-0 w-full h-full object-cover"
-                        whileHover={{ scale: 1.05, rotate: 2 }}
-                        transition={{ type: "spring", stiffness: 300 }}
-                      />
-                    ) : (
-                      <motion.div
-                        whileHover={{ scale: 1.1, rotate: 5 }}
-                        transition={{ type: "spring", stiffness: 300 }}
-                      >
-                        <Bug className="h-16 w-16 text-white/80" />
-                      </motion.div>
-                    )}
-                    <motion.div
-                      className="absolute inset-0 bg-white/10"
-                      initial={{ x: "-100%" }}
-                      whileHover={{ x: "100%" }}
-                      transition={{ duration: 0.5 }}
-                    />
-                  </div>
-                  <CardHeader>
-                    <CardTitle className="group-hover:text-primary transition-colors">
-                      {project.title}
-                    </CardTitle>
-                    <CardDescription>{project.description}</CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="grid grid-cols-3 gap-4 mb-4">
-                      <div className="text-center">
-                        <div className="text-2xl font-bold text-primary">{project.testCases}</div>
-                        <div className="text-xs text-muted-foreground">Test Cases</div>
-                      </div>
-                      <div className="text-center">
-                        <div className="text-2xl font-bold text-green-500">{project.defectsFound}</div>
-                        <div className="text-xs text-muted-foreground">Defects Found</div>
-                      </div>
-                      <div className="text-center">
-                        <div className="text-2xl font-bold text-blue-500">{project.coverage}</div>
-                        <div className="text-xs text-muted-foreground">Coverage</div>
-                      </div>
-                    </div>
-                    <div className="flex flex-wrap gap-2 mb-4">
-                      {project.technologies.map((tech, techIndex) => (
+              <SwiperSlide key={index}>
+                <motion.div
+                  variants={itemVariants}
+                  whileHover={{ y: -10 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                >
+                  <Card className="overflow-hidden hover:shadow-xl transition-all duration-300 group border-0">
+                    <div className={`h-48 bg-gradient-to-br ${project.gradient} flex items-center justify-center relative overflow-hidden`}>
+                      {project.featured && (
                         <motion.div
-                          key={techIndex}
-                          whileHover={{ scale: 1.05 }}
+                          className="absolute top-4 right-4 bg-yellow-500 text-yellow-900 px-2 py-1 rounded-full text-xs font-bold flex items-center gap-1"
+                          initial={{ scale: 0 }}
+                          animate={{ scale: 1 }}
+                          transition={{ delay: 0.5 }}
                         >
-                          <Badge variant="outline" className="text-xs">
-                            {tech}
-                          </Badge>
+                          <Star className="h-3 w-3" />
+                          Featured
                         </motion.div>
-                      ))}
+                      )}
+                      {project.img ? (
+                        <motion.img
+                          src={project.img}
+                          alt={project.title}
+                          className="absolute inset-0 w-full h-full object-cover"
+                          whileHover={{ scale: 1.05, rotate: 2 }}
+                          transition={{ type: "spring", stiffness: 300 }}
+                        />
+                      ) : (
+                        <motion.div
+                          whileHover={{ scale: 1.1, rotate: 5 }}
+                          transition={{ type: "spring", stiffness: 300 }}
+                        >
+                          <Bug className="h-16 w-16 text-white/80" />
+                        </motion.div>
+                      )}
+                      <motion.div
+                        className="absolute inset-0 bg-white/10"
+                        initial={{ x: "-100%" }}
+                        whileHover={{ x: "100%" }}
+                        transition={{ duration: 0.5 }}
+                      />
                     </div>
-                    <div className="flex gap-2">
-                      <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                        {project.testPlan ? (
-                          <a href={project.testPlan} target="_blank" rel="noopener noreferrer">
+                    <CardHeader>
+                      <CardTitle className="group-hover:text-primary transition-colors">
+                        {project.title}
+                      </CardTitle>
+                      <CardDescription>{project.description}</CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="grid grid-cols-3 gap-4 mb-4">
+                        <div className="text-center">
+                          <div className="text-2xl font-bold text-primary">{project.testCases}</div>
+                          <div className="text-xs text-muted-foreground">Test Cases</div>
+                        </div>
+                        <div className="text-center">
+                          <div className="text-2xl font-bold text-green-500">{project.defectsFound}</div>
+                          <div className="text-xs text-muted-foreground">Defects Found</div>
+                        </div>
+                        <div className="text-center">
+                          <div className="text-2xl font-bold text-blue-500">{project.coverage}</div>
+                          <div className="text-xs text-muted-foreground">Coverage</div>
+                        </div>
+                      </div>
+                      <div className="flex flex-nowrap gap-2 mb-4 max-h-16 overflow-x-auto custom-scrollbar pb-2">
+                        {project.technologies.map((tech, techIndex) => (
+                          <motion.div
+                            key={techIndex}
+                            whileHover={{ scale: 1.05 }}
+                          >
+                            <Badge variant="outline" className="text-xs">
+                              {tech}
+                            </Badge>
+                          </motion.div>
+                        ))}
+                      </div>
+                      <div className="flex gap-2">
+                        <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                          {project.testPlan ? (
+                            <a href={project.testPlan} target="_blank" rel="noopener noreferrer">
+                              <Button variant="outline" size="sm" className="group">
+                                <FileCheck className="mr-2 h-4 w-4 group-hover:rotate-12 transition-transform" />
+                                Test Plan
+                              </Button>
+                            </a>
+                          ) : (
                             <Button variant="outline" size="sm" className="group">
                               <FileCheck className="mr-2 h-4 w-4 group-hover:rotate-12 transition-transform" />
                               Test Plan
                             </Button>
-                          </a>
-                        ) : (
-                          <Button variant="outline" size="sm" className="group">
-                            <FileCheck className="mr-2 h-4 w-4 group-hover:rotate-12 transition-transform" />
-                            Test Plan
-                          </Button>
-                        )}
-                      </motion.div>
-                      <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                        {project.viewResult ? (
-                          <a href={project.viewResult} target="_blank" rel="noopener noreferrer">
+                          )}
+                        </motion.div>
+                        <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                          {project.viewResult ? (
+                            <a href={project.viewResult} target="_blank" rel="noopener noreferrer">
+                              <Button size="sm" className="group">
+                                <ExternalLink className="mr-2 h-4 w-4 group-hover:rotate-12 transition-transform" />
+                                View Results
+                              </Button>
+                            </a>
+                          ) : (
                             <Button size="sm" className="group">
                               <ExternalLink className="mr-2 h-4 w-4 group-hover:rotate-12 transition-transform" />
                               View Results
                             </Button>
-                          </a>
-                        ) : (
-                          <Button size="sm" className="group">
-                            <ExternalLink className="mr-2 h-4 w-4 group-hover:rotate-12 transition-transform" />
-                            View Results
-                          </Button>
-                        )}
-                      </motion.div>
-                    </div>
-                  </CardContent>
-                </Card>
-              </motion.div>
+                          )}
+                        </motion.div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              </SwiperSlide>
             ))}
-          </div>
+          </Swiper>
         </motion.div>
       </section>
 
