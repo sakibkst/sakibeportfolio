@@ -151,6 +151,7 @@ function App() {
       coverage: '92%',
       gradient: 'from-orange-600 to-pink-600',
       featured: false,
+      img: '/JobPortal.jpg',
       testPlan: 'https://github.com/sakibkst/Software-Quality-Assurance-and-Testing', // <-- Replace with your actual link
       viewResult: 'https://github.com/sakibkst/Software-Quality-Assurance-and-Testing', // <-- 
     },
