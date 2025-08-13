@@ -108,6 +108,9 @@ function App() {
     }
   ]
 
+
+  // Project Section
+
   const projects = [
     {
       title: 'E-Commerce Testing Suite',
@@ -117,8 +120,13 @@ function App() {
       defectsFound: '150+',
       coverage: '95%',
       gradient: 'from-blue-600 to-purple-600',
-      featured: true
+      featured: true,
+      img: '/AutoWorx.jpg',
+      testPlan: 'https://github.com/sakibkst/Performance_Testing_Using_Jmeter_Autoworx', // <-- Replace with your actual link
+      viewResult: 'https://github.com/sakibkst/Performance_Testing_Using_Jmeter_Autoworx', // <-- Replace with your actual link
     },
+
+
     {
       title: 'Mobile Banking App QA',
       description: 'End-to-end testing of mobile banking application with focus on security, usability, and cross-platform compatibility.',
@@ -540,12 +548,22 @@ function App() {
                         Featured
                       </motion.div>
                     )}
-                    <motion.div
-                      whileHover={{ scale: 1.1, rotate: 5 }}
-                      transition={{ type: "spring", stiffness: 300 }}
-                    >
-                      <Bug className="h-16 w-16 text-white/80" />
-                    </motion.div>
+                    {project.img ? (
+                      <motion.img
+                        src={project.img}
+                        alt={project.title}
+                        className="absolute inset-0 w-full h-full object-cover"
+                        whileHover={{ scale: 1.05, rotate: 2 }}
+                        transition={{ type: "spring", stiffness: 300 }}
+                      />
+                    ) : (
+                      <motion.div
+                        whileHover={{ scale: 1.1, rotate: 5 }}
+                        transition={{ type: "spring", stiffness: 300 }}
+                      >
+                        <Bug className="h-16 w-16 text-white/80" />
+                      </motion.div>
+                    )}
                     <motion.div
                       className="absolute inset-0 bg-white/10"
                       initial={{ x: "-100%" }}
@@ -588,16 +606,34 @@ function App() {
                     </div>
                     <div className="flex gap-2">
                       <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                        <Button variant="outline" size="sm" className="group">
-                          <FileCheck className="mr-2 h-4 w-4 group-hover:rotate-12 transition-transform" />
-                          Test Plan
-                        </Button>
+                        {project.testPlan ? (
+                          <a href={project.testPlan} target="_blank" rel="noopener noreferrer">
+                            <Button variant="outline" size="sm" className="group">
+                              <FileCheck className="mr-2 h-4 w-4 group-hover:rotate-12 transition-transform" />
+                              Test Plan
+                            </Button>
+                          </a>
+                        ) : (
+                          <Button variant="outline" size="sm" className="group">
+                            <FileCheck className="mr-2 h-4 w-4 group-hover:rotate-12 transition-transform" />
+                            Test Plan
+                          </Button>
+                        )}
                       </motion.div>
                       <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                        <Button size="sm" className="group">
-                          <ExternalLink className="mr-2 h-4 w-4 group-hover:rotate-12 transition-transform" />
-                          View Results
-                        </Button>
+                        {project.viewResult ? (
+                          <a href={project.viewResult} target="_blank" rel="noopener noreferrer">
+                            <Button size="sm" className="group">
+                              <ExternalLink className="mr-2 h-4 w-4 group-hover:rotate-12 transition-transform" />
+                              View Results
+                            </Button>
+                          </a>
+                        ) : (
+                          <Button size="sm" className="group">
+                            <ExternalLink className="mr-2 h-4 w-4 group-hover:rotate-12 transition-transform" />
+                            View Results
+                          </Button>
+                        )}
                       </motion.div>
                     </div>
                   </CardContent>
