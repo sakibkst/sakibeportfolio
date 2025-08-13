@@ -143,14 +143,16 @@ function App() {
       featured: true
     },
     {
-      title: 'Healthcare System Validation',
-      description: 'Validation and verification of healthcare management system ensuring HIPAA compliance and data integrity.',
-      technologies: ['Manual Testing', 'SQL', 'Postman', 'LoadRunner', 'Zephyr'],
+      title: 'Job Portal Testing',
+      description: 'Performed both functional and non-functional testing of a Job Portal management system using Selenium WebDriver.',
+      technologies: ['Selenium WebDriver','Jmeter','Manual Testing', 'SQL', 'Postman', 'Jira'],
       testCases: '400+',
       defectsFound: '120+',
       coverage: '92%',
       gradient: 'from-orange-600 to-pink-600',
-      featured: false
+      featured: false,
+      testPlan: 'https://github.com/sakibkst/Software-Quality-Assurance-and-Testing', // <-- Replace with your actual link
+      viewResult: 'https://github.com/sakibkst/Software-Quality-Assurance-and-Testing', // <-- 
     },
     {
       title: 'Healthcare System Validation',
