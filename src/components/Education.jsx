@@ -45,7 +45,7 @@ export default function Education() {
             <h3 className="text-2xl font-semibold">American International University-Bangladesh</h3>
             <p className="text-muted-foreground">June 2021 – 2025</p>
             <p>BSc in Computer Science and Engineering (Major in Software Engineering)</p>
-            <p className="font-bold text-primary">CGPA: 3.91</p>
+            <p className="font-bold text-primary">CGPA: 3.91 Out of 4.00</p>
           </motion.div>
           <motion.div
             className="flex-1 bg-background rounded-xl shadow-md p-6 flex flex-col gap-2 border-l-4 border-primary/70"
@@ -56,7 +56,7 @@ export default function Education() {
             <h3 className="text-xl font-semibold">Kushtia Govt. College</h3>
             <p className="text-muted-foreground">July 2017 – June 2019</p>
             <p>Higher Secondary Certificate</p>
-            <p className="font-bold text-primary">GPA: 5.00</p>
+            <p className="font-bold text-primary">GPA: 5.00 Out of 5.00</p>
           </motion.div>
           <motion.div
             className="flex-1 bg-background rounded-xl shadow-md p-6 flex flex-col gap-2 border-l-4 border-primary/40"
@@ -67,7 +67,7 @@ export default function Education() {
             <h3 className="text-xl font-semibold">Kushtia Zilla School</h3>
             <p className="text-muted-foreground">July 2009 – June 2017</p>
             <p>Secondary School Certificate</p>
-            <p className="font-bold text-primary">GPA: 5.00</p>
+            <p className="font-bold text-primary">GPA: 5.00 Out of 5.00</p>
           </motion.div>
         </div>
         {/* Academic Achievements */}

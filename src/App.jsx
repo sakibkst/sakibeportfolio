@@ -43,6 +43,7 @@ import './App.css'
 import Skill from './components/Skill.jsx'
 import Education from './components/Education.jsx'
 
+
 function App() {
   const [darkMode, setDarkMode] = useState(true)
   const [activeSection, setActiveSection] = useState('home')
@@ -223,7 +224,9 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
+    <div className="min-h-screen bg-background text-foreground overflow-x-hidden relative">
+      {/* Particle Animated Background */}
+
       {/* Navigation */}
       <motion.nav 
         initial={{ y: -100 }}
