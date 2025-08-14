@@ -477,7 +477,7 @@ function App() {
       </section>
 
       {/* Skills Section (Component) */}
-      <Skill />
+      {/* <Skill /> */}
 
       {/* Skills Section */}
       <section id="skills" className="py-16 px-4">
@@ -679,6 +679,7 @@ function App() {
 
 
       {/* Experience Section */}
+      {/*
       <section id="experience" className="py-16 px-4">
         <motion.div 
           className="container mx-auto"
@@ -762,6 +763,7 @@ function App() {
           </div>
         </motion.div>
       </section>
+      */}
 
       {/* Education Section */}
       <Education />
