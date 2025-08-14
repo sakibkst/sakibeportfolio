@@ -7,6 +7,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import { motion, AnimatePresence } from 'framer-motion'
 import { Button } from '@/components/ui/button.jsx'
+import { useRef } from 'react'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card.jsx'
 import { Badge } from '@/components/ui/badge.jsx'
 import { Input } from '@/components/ui/input.jsx'
@@ -48,6 +49,8 @@ function App() {
   const [darkMode, setDarkMode] = useState(true)
   const [activeSection, setActiveSection] = useState('home')
   const [isVisible, setIsVisible] = useState({})
+  const [mobileNavOpen, setMobileNavOpen] = useState(false)
+  const navRef = useRef()
 
   useEffect(() => {
     if (darkMode) {
@@ -232,6 +235,7 @@ function App() {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         className="fixed top-0 w-full bg-background/80 backdrop-blur-md border-b border-border z-50"
+        ref={navRef}
       >
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
           <motion.div 
@@ -240,6 +244,7 @@ function App() {
           >
             Md Omar Faruk Sakib
           </motion.div>
+          {/* Desktop Nav */}
           <div className="hidden md:flex space-x-6">
             {['home', 'about', 'skills', 'projects', 'experience', 'education', 'certifications', 'contact'].map((section) => (
               <motion.button
@@ -261,7 +266,13 @@ function App() {
               </motion.button>
             ))}
           </div>
-          <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+          {/* Mobile Hamburger */}
+          <div className="md:hidden flex items-center">
+            <Button variant="outline" size="icon" onClick={() => setMobileNavOpen(true)} aria-label="Open navigation menu">
+              <svg width="28" height="28" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+            </Button>
+          </div>
+          <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} className="hidden md:block">
             <Button variant="outline" size="icon" onClick={toggleDarkMode}>
               <AnimatePresence mode="wait">
                 {darkMode ? (
@@ -289,6 +300,51 @@ function App() {
             </Button>
           </motion.div>
         </div>
+        {/* Mobile Nav Drawer */}
+        <AnimatePresence>
+          {mobileNavOpen && (
+            <motion.div
+              initial={{ x: '100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '100%' }}
+              transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+              className="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm flex justify-end md:hidden"
+              onClick={() => setMobileNavOpen(false)}
+            >
+              <motion.div
+                initial={{ x: '100%' }}
+                animate={{ x: 0 }}
+                exit={{ x: '100%' }}
+                transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+                className="w-4/5 max-w-xs h-full bg-background shadow-xl p-6 flex flex-col gap-8 relative"
+                onClick={e => e.stopPropagation()}
+              >
+                <div className="flex justify-between items-center mb-4">
+                  <span className="text-xl font-bold bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">Menu</span>
+                  <Button variant="ghost" size="icon" onClick={() => setMobileNavOpen(false)} aria-label="Close navigation menu">
+                    <svg width="28" height="28" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+                  </Button>
+                </div>
+                <nav className="flex flex-col gap-4">
+                  {['home', 'about', 'skills', 'projects', 'experience', 'education', 'certifications', 'contact'].map((section) => (
+                    <button
+                      key={section}
+                      onClick={() => { setMobileNavOpen(false); scrollToSection(section); }}
+                      className={`capitalize text-lg text-left px-2 py-2 rounded hover:bg-primary/10 transition-colors ${activeSection === section ? 'text-primary font-semibold' : ''}`}
+                    >
+                      {section}
+                    </button>
+                  ))}
+                </nav>
+                <div className="flex gap-4 mt-auto">
+                  <Button variant="outline" size="icon" onClick={toggleDarkMode}>
+                    {darkMode ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+                  </Button>
+                </div>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </motion.nav>
 
       {/* Hero Section */}
