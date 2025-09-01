@@ -7,7 +7,6 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import { motion, AnimatePresence } from 'framer-motion'
 import { Button } from '@/components/ui/button.jsx'
-import { useRef } from 'react'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card.jsx'
 import { Badge } from '@/components/ui/badge.jsx'
 import { Input } from '@/components/ui/input.jsx'
@@ -49,8 +48,6 @@ function App() {
   const [darkMode, setDarkMode] = useState(true)
   const [activeSection, setActiveSection] = useState('home')
   const [isVisible, setIsVisible] = useState({})
-  const [mobileNavOpen, setMobileNavOpen] = useState(false)
-  const navRef = useRef()
 
   useEffect(() => {
     if (darkMode) {
@@ -172,26 +169,26 @@ function App() {
   ]
 
   const experience = [
+    // {
+    //   title: 'Senior QA Engineer',
+    //   company: 'TechCorp Solutions',
+    //   period: '2022 - Present',
+    //   description: 'Lead QA engineer responsible for testing strategy, automation framework development, and team mentoring.',
+    //   achievements: ['Reduced testing time by 60%', 'Improved defect detection by 40%', 'Led team of 5 QA engineers'],
+    //   technologies: ['Selenium', 'Cypress', 'Jenkins', 'Docker']
+    // },
     {
-      title: 'Senior QA Engineer',
-      company: 'TechCorp Solutions',
-      period: '2022 - Present',
-      description: 'Lead QA engineer responsible for testing strategy, automation framework development, and team mentoring.',
-      achievements: ['Reduced testing time by 60%', 'Improved defect detection by 40%', 'Led team of 5 QA engineers'],
-      technologies: ['Selenium', 'Cypress', 'Jenkins', 'Docker']
-    },
-    {
-      title: 'QA Engineer',
-      company: 'Digital Innovations Inc.',
-      period: '2020 - 2022',
+      title: 'Jr Software Engineer QA',
+      company: 'Luminar Technology',
+      period: '2025 - Present',
       description: 'Performed comprehensive testing of web and mobile applications with focus on automation and performance.',
       achievements: ['Automated 80% of test cases', 'Established CI/CD pipeline', 'Reduced regression testing time'],
       technologies: ['TestComplete', 'Postman', 'JMeter', 'Git']
     },
     {
-      title: 'Junior QA Analyst',
-      company: 'StartUp Ventures',
-      period: '2019 - 2020',
+      title: 'Trainee Software Engineer QA',
+      company: 'Levant It Solution',
+      period: '2024 - 2025',
       description: 'Entry-level position focusing on manual testing, test case creation, and defect reporting.',
       achievements: ['Created 200+ test cases', 'Found 100+ critical bugs', 'Learned automation tools'],
       technologies: ['Manual Testing', 'JIRA', 'TestRail', 'SQL']
@@ -235,7 +232,6 @@ function App() {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         className="fixed top-0 w-full bg-background/80 backdrop-blur-md border-b border-border z-50"
-        ref={navRef}
       >
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
           <motion.div 
@@ -244,7 +240,6 @@ function App() {
           >
             Md Omar Faruk Sakib
           </motion.div>
-          {/* Desktop Nav */}
           <div className="hidden md:flex space-x-6">
             {['home', 'about', 'skills', 'projects', 'experience', 'education', 'certifications', 'contact'].map((section) => (
               <motion.button
@@ -266,13 +261,7 @@ function App() {
               </motion.button>
             ))}
           </div>
-          {/* Mobile Hamburger */}
-          <div className="md:hidden flex items-center">
-            <Button variant="outline" size="icon" onClick={() => setMobileNavOpen(true)} aria-label="Open navigation menu">
-              <svg width="28" height="28" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
-            </Button>
-          </div>
-          <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} className="hidden md:block">
+          <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
             <Button variant="outline" size="icon" onClick={toggleDarkMode}>
               <AnimatePresence mode="wait">
                 {darkMode ? (
@@ -300,51 +289,6 @@ function App() {
             </Button>
           </motion.div>
         </div>
-        {/* Mobile Nav Drawer */}
-        <AnimatePresence>
-          {mobileNavOpen && (
-            <motion.div
-              initial={{ x: '100%' }}
-              animate={{ x: 0 }}
-              exit={{ x: '100%' }}
-              transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-              className="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm flex justify-end md:hidden"
-              onClick={() => setMobileNavOpen(false)}
-            >
-              <motion.div
-                initial={{ x: '100%' }}
-                animate={{ x: 0 }}
-                exit={{ x: '100%' }}
-                transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-                className="w-4/5 max-w-xs h-full bg-background shadow-xl p-6 flex flex-col gap-8 relative"
-                onClick={e => e.stopPropagation()}
-              >
-                <div className="flex justify-between items-center mb-4">
-                  <span className="text-xl font-bold bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">Menu</span>
-                  <Button variant="ghost" size="icon" onClick={() => setMobileNavOpen(false)} aria-label="Close navigation menu">
-                    <svg width="28" height="28" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
-                  </Button>
-                </div>
-                <nav className="flex flex-col gap-4">
-                  {['home', 'about', 'skills', 'projects', 'experience', 'education', 'certifications', 'contact'].map((section) => (
-                    <button
-                      key={section}
-                      onClick={() => { setMobileNavOpen(false); scrollToSection(section); }}
-                      className={`capitalize text-lg text-left px-2 py-2 rounded hover:bg-primary/10 transition-colors ${activeSection === section ? 'text-primary font-semibold' : ''}`}
-                    >
-                      {section}
-                    </button>
-                  ))}
-                </nav>
-                <div className="flex gap-4 mt-auto">
-                  <Button variant="outline" size="icon" onClick={toggleDarkMode}>
-                    {darkMode ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
-                  </Button>
-                </div>
-              </motion.div>
-            </motion.div>
-          )}
-        </AnimatePresence>
       </motion.nav>
 
       {/* Hero Section */}
@@ -735,7 +679,6 @@ function App() {
 
 
       {/* Experience Section */}
-      {/*
       <section id="experience" className="py-16 px-4">
         <motion.div 
           className="container mx-auto"
@@ -819,7 +762,6 @@ function App() {
           </div>
         </motion.div>
       </section>
-      */}
 
       {/* Education Section */}
       <Education />
