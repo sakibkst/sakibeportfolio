@@ -45,7 +45,7 @@ export default function Education() {
             <h3 className="text-2xl font-semibold">American International University-Bangladesh</h3>
             <p className="text-muted-foreground">June 2021 – 2025</p>
             <p>BSc in Computer Science and Engineering (Major in Software Engineering)</p>
-            <p className="font-bold text-primary">CGPA: 3.91 Out of 4.00</p>
+            <p className="font-bold text-primary">CGPA: 3.90 Out of 4.00</p>
           </motion.div>
           <motion.div
             className="flex-1 bg-background rounded-xl shadow-md p-6 flex flex-col gap-2 border-l-4 border-primary/70"

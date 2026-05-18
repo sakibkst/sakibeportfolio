@@ -178,7 +178,7 @@ function App() {
     //   technologies: ['Selenium', 'Cypress', 'Jenkins', 'Docker']
     // },
     {
-      title: 'Jr Software Engineer QA',
+      title: 'Software Engineer QA',
       company: 'Luminar Technology',
       period: '2025 - Present',
       description: 'Performed comprehensive testing of web and mobile applications with focus on automation and performance.',
@@ -196,10 +196,10 @@ function App() {
   ]
 
   const certifications = [
-    { name: 'ISTQB Foundation Level', issuer: 'ISTQB', year: '2023' },
-    { name: 'Certified Agile Tester', issuer: 'iSQI', year: '2022' },
-    { name: 'Selenium WebDriver', issuer: 'Udemy', year: '2021' },
-    { name: 'API Testing with Postman', issuer: 'Coursera', year: '2021' }
+    //{ name: 'ISTQB Foundation Level', issuer: 'ISTQB', year: '2026' },
+    { name: 'Software Testing Foundations: Continuous Testing and DevOps', issuer: 'LinkedIn Learning', year: '2025' },
+    { name: 'Learning Playwright', issuer: 'LinkedIn Learning', year: '2025' },
+    { name: 'JMeter: Performance and Load Testing', issuer: 'LinkedIn Learning', year: '2025' }
   ]
 
   const containerVariants = {
