@@ -302,10 +302,10 @@ function App() {
         >
           <div className="max-w-4xl mx-auto">
             <motion.h1 
-              className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent"
+              className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent leading-tight pb-2"
               variants={itemVariants}
             >
-              SQA Engineer
+              Software Engineer QA
             </motion.h1>
             <motion.p 
               className="text-xl md:text-2xl text-muted-foreground mb-8 leading-relaxed"
@@ -425,7 +425,7 @@ function App() {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <motion.div variants={itemVariants}>
               <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-                Myself Md Omar Faruk Sakib. I'm a dedicated SQA Engineer with over 2 years of experience in software quality assurance. 
+                Myself Md Omar Faruk Sakib. I'm a dedicated Software Engineer QA with over 2 years of experience in software quality assurance. 
                 I specialize in creating comprehensive testing strategies, developing automation frameworks, 
                 and ensuring the highest quality standards for software products.
               </p>
