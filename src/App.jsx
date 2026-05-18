@@ -787,8 +787,9 @@ function App() {
                 variants={itemVariants}
                 whileHover={{ y: -5, scale: 1.02 }}
                 transition={{ type: "spring", stiffness: 300 }}
+                className="h-full"
               >
-                <Card className="text-center hover:shadow-lg transition-all duration-300">
+                <Card className="text-center hover:shadow-lg transition-all duration-300 h-full flex flex-col justify-center">
                   <CardHeader>
                     <motion.div
                       className="mx-auto mb-2 p-3 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-full w-fit"
